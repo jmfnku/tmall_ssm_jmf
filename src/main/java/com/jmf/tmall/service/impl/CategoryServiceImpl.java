@@ -10,6 +10,7 @@ package com.jmf.tmall.service.impl;
 
 import com.jmf.tmall.mapper.CategoryMapper;
 import com.jmf.tmall.pojo.Category;
+import com.jmf.tmall.pojo.Page;
 import com.jmf.tmall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,14 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryMapper categoryMapper;
+
     @Override
-    public List<Category> list(){
-        return categoryMapper.list();
+    public List<Category> list(Page page) {
+        return categoryMapper.list(page);
+    }
+
+    @Override
+    public int total() {
+        return categoryMapper.total();
     }
 }

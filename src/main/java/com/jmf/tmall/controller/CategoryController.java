@@ -9,6 +9,7 @@ package com.jmf.tmall.controller;
 
 
 import com.jmf.tmall.pojo.Category;
+import com.jmf.tmall.pojo.Page;
 import com.jmf.tmall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,9 +34,13 @@ public class CategoryController {
 
     @RequestMapping("admin_category_list")
     public String list(Model model){
-        List<Category> cs= categoryService.list();
-        System.out.println();
+        Page page = new Page(5,5);
+        List<Category> cs= categoryService.list(page);
+        int total = categoryService.total();
+        System.out.println(cs);
+        System.out.println(total);
         model.addAttribute("cs", cs);
+        model.addAttribute("total",total);
         return "admin/listCategory";
     }
 }
