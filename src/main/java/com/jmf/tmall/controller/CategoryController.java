@@ -46,7 +46,7 @@ public class CategoryController {
         model.addAttribute("total",total);
         return "admin/listCategory";
     }
-
+    //测试master回退1
     @RequestMapping("admin_category_add")
     public String add(){
         Category category = new Category();
