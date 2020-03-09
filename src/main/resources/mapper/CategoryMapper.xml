@@ -6,11 +6,22 @@
 <mapper namespace="com.jmf.tmall.mapper.CategoryMapper">
     <select id="list" resultType="com.jmf.tmall.pojo.Category">
     select * from   category order by id desc
-    <if test="start != null and count != null">
+    <!--<if test="start != null and count != null">
         limit #{start},#{count}
-    </if>
+    </if>-->
   </select>
-    <select id="total" resultType="int">
+    <!--<select id="total" resultType="int">
         select count(*) from category
-    </select>
+    </select>-->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.jmf.tmall.pojo.Category">
+        insert into category (name) values (#{name});
+    </insert>
+    <delete id="delete" parameterType="com.jmf.tmall.pojo.Category">
+        delete from category where name = #{name}
+    </delete>
+    <update id="update" parameterType="com.jmf.tmall.pojo.Category">
+        update category set name = #{name}
+        where id = #{id}
+    </update>
+
 </mapper>
