@@ -56,6 +56,10 @@
                         </value>
                     </property>
                 </bean>
+                <bean class="com.jmf.tmall.mapper.MyPlugin">
+                    <property name="dbType" value = "mysql" />
+                    <property name="limit" value = "5"/>
+                </bean>
             </array>
         </property>
 
